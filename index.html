@@ -5,410 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workshop Challenge Event</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-light: #818cf8;
-            --secondary: #f97316;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-        }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 60px 0 80px;
-            text-align: center;
-            border-radius: 0 0 30px 30px;
-            position: relative;
-            margin-bottom: 40px;
-        }
-        
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 40px;
-            background-color: var(--light);
-            border-radius: 50%;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        h2 { 
-            color: var(--primary);
-            font-weight: 600;
-            margin-top: 0;
-            font-size: 1.75rem;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        section { 
-            margin-bottom: 40px; 
-            padding: 30px; 
-            background: white; 
-            border-radius: 16px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-        
-        ol li {
-            margin-bottom: 12px;
-            position: relative;
-            padding-left: 8px;
-        }
-        
-        .placeholder { 
-            background-color: #f1f5f9; 
-            padding: 30px; 
-            border-radius: 12px; 
-            color: var(--gray); 
-            text-align: center;
-            border: 2px dashed #cbd5e1;
-        }
-        
-        details {
-            margin-bottom: 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        summary { 
-            font-weight: 600; 
-            font-size: 1.1rem; 
-            cursor: pointer;
-            padding: 16px 20px;
-            background-color: #f8fafc;
-            border-radius: 8px;
-            position: relative;
-            outline: none;
-        }
-        
-        summary::after {
-            content: '+';
-            position: absolute;
-            right: 20px;
-            transition: transform 0.3s ease;
-        }
-        
-        details[open] summary::after {
-            content: '−';
-        }
-        
-        details[open] summary {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-        
-        .template-container {
-            position: relative;
-        }
-        
-        pre {
-            background-color: #f1f5f9;
-            padding: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        
-        code {
-            color: #334155;
-            font-family: monospace;
-        }
-        
-        .copy-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 6px 10px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--dark);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            z-index: 10;
-        }
-        
-        .copy-button:hover {
-            background-color: var(--primary-light);
-            color: white;
-            border-color: var(--primary-light);
-        }
-        
-        .copy-icon {
-            width: 16px;
-            height: 16px;
-        }
-        
-        .copy-success {
-            position: absolute;
-            top: 45px;
-            right: 10px;
-            background-color: #10b981;
-            color: white;
-            border-radius: 6px;
-            padding: 6px 10px;
-            font-size: 0.9rem;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 9;
-            pointer-events: none;
-        }
-        
-        .copy-success.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin-top: 15px;
-        }
-        
-        .cta-button:hover {
-            background-color: #ea580c;
-        }
-        
-        .illustration-placeholder {
-            height: 150px;
-            background-color: #f1f5f9;
-            border-radius: 12px;
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            border: 2px dashed #cbd5e1;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Submit section styles */
-        .submit-section {
-            background: linear-gradient(135deg, #fff, #f1f5f9);
-            border: 2px solid rgba(99, 102, 241, 0.1);
-        }
-        
-        .submit-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .submit-info {
-            flex: 1 1 350px;
-        }
-        
-        .submit-decoration {
-            flex: 1 1 250px;
-            position: relative;
-            min-height: 250px;
-        }
-        
-        .submit-tagline {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .benefits-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-        
-        .benefits-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            font-size: 1.1rem;
-        }
-        
-        .benefit-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .submit-button {
-            display: inline-flex;
-            align-items: center;
-            background: linear-gradient(90deg, var(--secondary), #fb923c);
-            padding: 14px 30px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-            transform-origin: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .submit-button:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
-            background: linear-gradient(90deg, #fb923c, var(--secondary));
-        }
-        
-        .button-text {
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        .button-icon {
-            margin-left: 8px;
-            font-size: 1.2rem;
-            transition: transform 0.2s ease;
-        }
-        
-        .submit-button:hover .button-icon {
-            transform: translateX(4px);
-        }
-        
-        .submit-illustration {
-            height: 200px;
-            z-index: 2;
-            position: relative;
-        }
-        
-        .circle-decoration {
-            position: absolute;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(129, 140, 248, 0.1));
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            border: 2px dashed rgba(99, 102, 241, 0.2);
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            section {
-                padding: 20px;
-            }
-            
-            .submit-container {
-                flex-direction: column;
-            }
-            
-            .submit-decoration {
-                order: -1;
-            }
-            
-            .submit-tagline {
-                font-size: 1.2rem;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        'primary-light': '#818cf8',
+                        secondary: '#f97316',
+                        dark: '#1e293b',
+                        light: '#f8fafc',
+                        gray: '#94a3b8'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                }
             }
         }
-    </style>
+    </script>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <h1>One-Prompt Challenge Workshop</h1>
-            <p class="subtitle">Create amazing solutions with just a single prompt. Join the challenge and show your creative side!</p>
-            <p class="subtitle">25' April 2nd</p>
+<body class="font-inter bg-light text-dark">
+    <header class="relative mb-10 bg-gradient-to-br from-primary to-primary-light text-white">
+        <div class="max-w-5xl mx-auto px-4 py-16 text-center">
+            <h1 class="text-5xl font-bold mb-4">One-Prompt Challenge Workshop</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto mb-2">Create amazing solutions with just a single prompt. Join the challenge and show your creative side!</p>
+            <p class="text-xl opacity-90">25' April 2nd</p>
         </div>
+        <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-48 h-10 bg-light rounded-full shadow-lg"></div>
     </header>
 
-    <div class="container">
-        <div class="illustration-placeholder">
-            <!-- Illustration: People collaborating on a challenge -->
-            [Illustration: Team working together with light bulbs/ideas]
+    <main class="max-w-5xl mx-auto px-4">
+        <div class="mb-12">
+            <img src="./assets/img/teamideas.png" alt="Team working together with light bulbs and ideas" class="w-1/2 h-auto mx-auto rounded-xl">
         </div>
-        
-        <section>
-            <h2>Challenge How-To</h2>
-            <ol>
+
+        <section class="mb-12 p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <h2 class="text-2xl font-semibold text-primary mb-6">Purpose</h2>
+            <div class="space-y-4">
+                <p class="text-gray-700 leading-relaxed">
+                    The One-Prompt Challenge Workshop aims to analyze the power of AI to create different kind of solutions in one prompt. 
+                    The goal of the challenge is to create a solution to a problem or idea using a single prompt.
+                </p>
+            </div>
+        </section>
+    
+        <section class="mb-12 p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <h2 class="text-2xl font-semibold text-primary mb-6">Challenge How-To</h2>
+            <ol class="list-decimal list-inside space-y-3 ml-4">
                 <li>Clearly identify a problem or idea you wish to explore.</li>
                 <li>Select a suitable starter template.</li>
                 <li>Define your target user clearly.</li>
                 <li>Generate your first version using the chosen prompt.</li>
                 <li>Review your outcome, iterate, and improve your prompt within the provided attempts.</li>
+                <li>Submit your prompt on this web page</li>
             </ol>
-            <div class="illustration-placeholder">
-                <!-- Illustration: Process steps -->
-                [Illustration: Step-by-step process with checkmarks]
-            </div>
         </section>
 
-        <section>
-            <h2>Prompt Templates</h2>
-            <details>
-                <summary>Learning App Template</summary>
-                <div class="template-container">
-                    <button class="copy-button" onclick="copyTemplate('template1')">
-                        <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                        </svg>
-                        Copy
-                    </button>
-                    <div class="copy-success">Copied!</div>
-                    <pre><code id="template1">
+        <section class="mb-12 p-8 bg-white rounded-2xl shadow-md">
+            <h2 class="text-2xl font-semibold text-primary mb-6">Prompt Templates</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-white rounded-lg border border-gray-200">
+                    <summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
+                        <span class="text-lg font-medium">Learning App Template</span>
+                    </summary>
+                    <div class="p-4 border-t border-gray-200">
+                        <div class="relative">
+                            <button onclick="copyTemplate('template1')" 
+                                    class="absolute right-4 top-4 inline-flex items-center gap-2 px-3 py-1 text-sm rounded-md bg-white border border-gray-200 hover:bg-primary hover:text-white transition-colors">
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                                Copy
+                            </button>
+                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-green-500 text-white rounded-md">
+                                Copied!
+                            </div>
+                            <pre class="bg-gray-50 rounded-lg p-6 mt-2 overflow-x-auto">
+                            <code id="template1">
 # Generic Interactive Game Prompt Template
 
 Create an interactive, engaging web game app designed for users to [briefly describe target audience or age group]. The game should clearly introduce a playful scenario or character related to [state your chosen theme or topic here]. Follow this structured approach:
@@ -432,173 +108,211 @@ Create an interactive, engaging web game app designed for users to [briefly desc
  * Offer simple rewards (badges, scores, animations).
 
 ### Technical: Colorful, visually engaging, responsive design.</code></pre>
-                </div>
-            </details>
-
-            <details>
-                <summary>Productivity App Template</summary>
-                <div class="template-container">
-                    <button class="copy-button" onclick="copyTemplate('template2')">
-                        <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                        </svg>
-                        Copy
-                    </button>
-                    <div class="copy-success">Copied!</div>
-                    <pre><code id="template2">Generic Productivity App Prompt Template
+                        </div>
+                    </div>
+                </details>
+                <details class="group bg-white rounded-lg border border-gray-200">
+                    <summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
+                        <span class="text-lg font-medium">Productivity App Template</span>
+                    </summary>
+                    <div class="p-4 border-t border-gray-200">
+                        <div class="relative">
+                            <button onclick="copyTemplate('template2')" 
+                                    class="absolute right-4 top-4 inline-flex items-center gap-2 px-3 py-1 text-sm rounded-md bg-white border border-gray-200 hover:bg-primary hover:text-white transition-colors">
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                                Copy
+                            </button>
+                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-green-500 text-white rounded-md">
+                                Copied!
+                            </div>
+                            <pre class="bg-gray-50 rounded-lg p-6 mt-2 overflow-x-auto">
+                            <code id="template2">
+# Generic Productivity App Prompt Template
 
 Develop a simple and interactive web-based productivity app tailored for [briefly state target audience, e.g., professionals, students]. The app should effectively help users with [clearly state productivity goal or challenge]. Structure the app clearly:
 
-Clear Introduction
+1. Clear Introduction
 
-Briefly outline purpose and benefits.
+    * Briefly outline purpose and benefits.
 
-Interactive Functionality
+    * Interactive Functionality
 
-Simple, intuitive interactions guiding users towards their goals.
+2. Simple, intuitive interactions guiding users towards their goals.
 
-Visual or interactive elements for motivation and progress tracking.
+    * Visual or interactive elements for motivation and progress tracking.
 
-Completion & Encouragement
+3. Completion & Encouragement
 
-Offer encouraging feedback upon task completion.
+    * Offer encouraging feedback upon task completion.
 
-Clearly display progress summaries or motivational visuals.
+    * Clearly display progress summaries or motivational visuals.
 
-Technical: Clean, intuitive UI, fully responsive for desktop and mobile.</code></pre>
-                </div>
-            </details>
-
-            <details>
-                <summary>Interactive Game Template</summary>
-                <div class="template-container">
-                    <button class="copy-button" onclick="copyTemplate('template3')">
-                        <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                        </svg>
-                        Copy
-                    </button>
-                    <div class="copy-success">Copied!</div>
-                    <pre><code id="template3">Generic Learning Game Prompt Template
+### Technical: Clean, intuitive UI, fully responsive for desktop and mobile.</code></pre>
+                        </div>
+                    </div>
+                </details>
+                <details class="group bg-white rounded-lg border border-gray-200">
+                    <summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
+                        <span class="text-lg font-medium">Interactive Game Template</span>
+                    </summary>
+                    <div class="p-4 border-t border-gray-200">
+                        <div class="relative">
+                            <button onclick="copyTemplate('template3')" 
+                                    class="absolute right-4 top-4 inline-flex items-center gap-2 px-3 py-1 text-sm rounded-md bg-white border border-gray-200 hover:bg-primary hover:text-white transition-colors">
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                                Copy
+                            </button>
+                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-green-500 text-white rounded-md">
+                                Copied!
+                            </div>
+                            <pre class="bg-gray-50 rounded-lg p-6 mt-2 overflow-x-auto">
+                            <code id="template3">
+# Generic Learning Game Prompt Template
 
 Create a gamified educational web app for [target audience ] to learn the [topic] interactively. Follow the structure:
 
 Fun Examples:
 
-Friendly cartoon character introduces concept with real life examples.
+- Friendly cartoon character introduces concept with real life examples.
 
-Present 1-2 clear examples visually showing correct triangle solutions step-by-step.
+- Present 1-2 clear examples visually showing correct triangle solutions step-by-step.
 
-Visual Theory Explanation
+1. Visual Theory Explanation
 
-Briefly and visually explain the underlying theory with real-world examples.
+    * Briefly and visually explain the underlying theory with real-world examples.
 
-Interactive Challenges
+2. Interactive Challenges
 
-Offer 2-3 tasks where learner apply the theory.
+    * Offer 2-3 tasks where learner apply the theory.
 
-Immediate humorous feedback; award badges for correct answers.
+    * Immediate humorous feedback; award badges for correct answers.
 
-Quiz
+3. Quiz
 
-Short (1-2 questions) quiz to reinforce learning with fun feedback.
+    * Short (1-2 questions) quiz to reinforce learning with fun feedback.
 
-Technical: Bright visuals, humorous and engaging interactions, responsive for all devices.</code></pre>
-                </div>
-            </details>
-            
-            <div class="illustration-placeholder">
-                <!-- Illustration: Templates -->
-                [Illustration: Document templates with prompts]
+### Technical: Bright visuals, humorous and engaging interactions, responsive for all devices.</code></pre>
+                        </div>
+                    </div>
+                </details>
+                <details class="group bg-white rounded-lg border border-gray-200">
+                    <summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
+                        <span class="text-lg font-medium">Other (Custom Template)</span>
+                    </summary>
+                    <div class="p-4 border-t border-gray-200">
+                        <div class="relative">
+                            <button onclick="copyTemplate('template4')" 
+                                    class="absolute right-4 top-4 inline-flex items-center gap-2 px-3 py-1 text-sm rounded-md bg-white border border-gray-200 hover:bg-primary hover:text-white transition-colors">
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                                Copy
+                            </button>
+                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-green-500 text-white rounded-md">
+                                Copied!
+                            </div>
+                            <pre class="bg-gray-50 rounded-lg p-6 mt-2 overflow-x-auto">
+                            <code id="template4">
+# Custom Prompt Template
+
+Create a [type of application] that helps [target audience] with [main goal/problem to solve]. The application should follow this structure:
+
+1. Core Functionality
+
+    * Define the main feature or interaction
+    * Explain how it solves the user's problem
+
+2. User Experience
+
+    * Describe the key interactions
+    * Outline the user flow
+    * Specify any unique elements or innovations
+
+3. Visual & Technical Requirements
+
+    * State any specific visual requirements
+    * List technical requirements (responsive, accessibility, etc.)
+    * Define success metrics
+
+### Additional Notes:
+* Add any specific constraints or requirements
+* Include any unique features or innovations
+* Specify integration needs if any
+
+### Technical: [Add your technical requirements here]</code></pre>
+                        </div>
+                    </div>
+                </details>
             </div>
         </section>
 
-        <section class="submit-section">
-            <h2>Submit Your Entry</h2>
-            <div class="submit-container">
-                <div class="submit-info">
-                    <p class="submit-tagline">Finished your creation?</p>
-                    <ul class="benefits-list">
-                        <li><span class="benefit-icon">🔗</span> Be part of the community</li>
-                        <li><span class="benefit-icon">💡</span> Showcase your creativity</li>
-                        <li><span class="benefit-icon">✏️</span> You can edit your submission later too</li>
-                        <li><span class="benefit-icon">🔄</span> You can make multiple entries</li>
+        <section class="mb-12 p-8 bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-primary/10">
+            <h2 class="text-2xl font-semibold text-primary mb-6">Submit Your Entry</h2>
+            <div class="flex flex-wrap gap-8 items-center">
+                <div class="flex-1 min-w-[350px]">
+                    <p class="text-xl font-semibold text-primary mb-4">Finished your creation?</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">🔗</span>
+                            <span>Be part of the community</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">💡</span>
+                            <span>Showcase your creativity</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">✏️</span>
+                            <span>You can edit your submission later too</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">🔄</span>
+                            <span>You can make multiple entries</span>
+                        </li>
                     </ul>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSesqIFw3FglZuwFmLKjBs-SCZTPqYm4oWVv2pCRDf5oHhP2iw/viewform?usp=dialog" class="cta-button submit-button">
-                        <span class="button-text">Submit Your Challenge</span>
-                        <span class="button-icon">→</span>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSesqIFw3FglZuwFmLKjBs-SCZTPqYm4oWVv2pCRDf5oHhP2iw/viewform?usp=dialog" 
+                       class="inline-flex items-center px-8 py-3 mt-6 rounded-full bg-gradient-to-r from-secondary to-orange-400 text-white font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                        <span>Submit Your Challenge</span>
+                        <span class="ml-2 text-xl">→</span>
                     </a>
                 </div>
-                <div class="submit-decoration">
-                    <div class="circle-decoration"></div>
-                    <div class="illustration-placeholder submit-illustration">
-                        [Illustration: Person submitting an exciting prompt idea]
+                <div class="relative flex-1 min-w-[250px] min-h-[250px]">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/5 to-primary-light/5 border-2 border-dashed border-primary/20"></div>
+                    <div class="relative z-10 h-48">
+                        <img 
+                            src="./assets/img/satisfied-submit.png" 
+                            alt="Person submitting an exciting prompt idea" 
+                            class="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
+                        >
                     </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2>Submissions</h2>
-            <iframe
+        <section class="mb-12 p-8 bg-white rounded-2xl shadow-md">
+            <h2 class="text-2xl font-semibold text-primary mb-6">Submissions</h2>
+            <div class="relative">
+                <iframe 
+                    id="submissionsFrame"
                     src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRV-1bF_51FBa-fGS0VXKhLsZsBl3iPod1oKgLIVHlAHj1fpRzygoDqQAeZisbDrv4_0RBPiNO8xsj9/pubhtml?gid=378206683&amp;single=true&amp;widget=true&amp;headers=false&amp;range=C:E&amp;chrome=false"
-                    width="100%" height="600"
-            ></iframe>
-
-            <div class="illustration-placeholder">
-                <!-- Illustration: Submissions -->
-                [Illustration: Gallery of entries/submissions with awards]
+                    class="w-full h-[600px] rounded-lg"
+                ></iframe>
+                <div id="lastUpdated" class="absolute top-2 right-2 text-sm text-gray-500 bg-white/80 px-2 py-1 rounded-md">
+                    Last updated: <span id="updateTime"></span>
+                </div>
             </div>
         </section>
-    </div>
-    
-    <footer>
-        <div class="container">
+    </main>
+
+    <footer class="py-10 text-center text-gray">
+        <div class="max-w-5xl mx-auto px-4">
             <p>© 2025 One-Prompt Challenge Workshop. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        function copyTemplate(templateId) {
-            const templateElement = document.getElementById(templateId);
-            const templateText = templateElement.textContent;
-            
-            // Create a temporary textarea to copy from
-            const textarea = document.createElement('textarea');
-            textarea.value = templateText;
-            document.body.appendChild(textarea);
-            textarea.select();
-            
-            try {
-                // Execute copy command
-                document.execCommand('copy');
-                
-                // Show success message
-                const button = event.currentTarget;
-                const container = button.closest('.template-container');
-                const successMessage = container.querySelector('.copy-success');
-                
-                successMessage.classList.add('show');
-                
-                // Hide success message after 2 seconds
-                setTimeout(function() {
-                    successMessage.classList.remove('show');
-                }, 2000);
-                
-            } catch (err) {
-                console.error('Failed to copy template: ', err);
-            }
-            
-            // Clean up
-            document.body.removeChild(textarea);
-        }
-        
-        // Add click handler to details elements to prevent closing when copy button is clicked
-        document.querySelectorAll('.copy-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        });
-    </script>
+    <script src="./assets/js/copy.js"></script>
+    <script src="./assets/js/submissionupdater.js"></script>
 </body>
 </html>
