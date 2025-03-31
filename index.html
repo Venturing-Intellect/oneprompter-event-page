@@ -3,10 +3,602 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Workshop Challenge Event</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --secondary: #f97316;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        h2 { 
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 0;
+            font-size: 1.75rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        section { 
+            margin-bottom: 40px; 
+            padding: 30px; 
+            background: white; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        
+        ol li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 8px;
+        }
+        
+        .placeholder { 
+            background-color: #f1f5f9; 
+            padding: 30px; 
+            border-radius: 12px; 
+            color: var(--gray); 
+            text-align: center;
+            border: 2px dashed #cbd5e1;
+        }
+        
+        details {
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        summary { 
+            font-weight: 600; 
+            font-size: 1.1rem; 
+            cursor: pointer;
+            padding: 16px 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            position: relative;
+            outline: none;
+        }
+        
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        details[open] summary::after {
+            content: '−';
+        }
+        
+        details[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        
+        .template-container {
+            position: relative;
+        }
+        
+        pre {
+            background-color: #f1f5f9;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        code {
+            color: #334155;
+            font-family: monospace;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        
+        .copy-button:hover {
+            background-color: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+        
+        .copy-icon {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .copy-success {
+            position: absolute;
+            top: 45px;
+            right: 10px;
+            background-color: #10b981;
+            color: white;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 9;
+            pointer-events: none;
+        }
+        
+        .copy-success.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .cta-button:hover {
+            background-color: #ea580c;
+        }
+        
+        .illustration-placeholder {
+            height: 150px;
+            background-color: #f1f5f9;
+            border-radius: 12px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            border: 2px dashed #cbd5e1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Submit section styles */
+        .submit-section {
+            background: linear-gradient(135deg, #fff, #f1f5f9);
+            border: 2px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        .submit-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .submit-info {
+            flex: 1 1 350px;
+        }
+        
+        .submit-decoration {
+            flex: 1 1 250px;
+            position: relative;
+            min-height: 250px;
+        }
+        
+        .submit-tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .benefit-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .submit-button {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(90deg, var(--secondary), #fb923c);
+            padding: 14px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+            transform-origin: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+            background: linear-gradient(90deg, #fb923c, var(--secondary));
+        }
+        
+        .button-text {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .button-icon {
+            margin-left: 8px;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .submit-button:hover .button-icon {
+            transform: translateX(4px);
+        }
+        
+        .submit-illustration {
+            height: 200px;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .circle-decoration {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(129, 140, 248, 0.1));
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            border: 2px dashed rgba(99, 102, 241, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .submit-container {
+                flex-direction: column;
+            }
+            
+            .submit-decoration {
+                order: -1;
+            }
+            
+            .submit-tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello world</h1>
-    <p>test v3</p>
+    <header>
+        <div class="container">
+            <h1>One-Prompt Challenge Workshop</h1>
+            <p class="subtitle">Create amazing solutions with just a single prompt. Join the challenge and show your creative side!</p>
+            <p class="subtitle">25' April 2nd</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="illustration-placeholder">
+            <!-- Illustration: People collaborating on a challenge -->
+            [Illustration: Team working together with light bulbs/ideas]
+        </div>
+        
+        <section>
+            <h2>Challenge How-To</h2>
+            <ol>
+                <li>Clearly identify a problem or idea you wish to explore.</li>
+                <li>Select a suitable starter template.</li>
+                <li>Define your target user clearly.</li>
+                <li>Generate your first version using the chosen prompt.</li>
+                <li>Review your outcome, iterate, and improve your prompt within the provided attempts.</li>
+            </ol>
+            <div class="illustration-placeholder">
+                <!-- Illustration: Process steps -->
+                [Illustration: Step-by-step process with checkmarks]
+            </div>
+        </section>
+
+        <section>
+            <h2>Prompt Templates</h2>
+            <details>
+                <summary>Learning App Template</summary>
+                <div class="template-container">
+                    <button class="copy-button" onclick="copyTemplate('template1')">
+                        <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                        </svg>
+                        Copy
+                    </button>
+                    <div class="copy-success">Copied!</div>
+                    <pre><code id="template1">
+# Generic Interactive Game Prompt Template
+
+Create an interactive, engaging web game app designed for users to [briefly describe target audience or age group]. The game should clearly introduce a playful scenario or character related to [state your chosen theme or topic here]. Follow this structured approach:
+
+1. Introduction & Visual Appeal
+
+ * Briefly introduce the main scenario or character.
+
+ * Provide clear, intuitive instructions.
+
+2. Gameplay & Challenges
+
+ * Include interactive, intuitive, progressively challenging tasks.
+
+ * Immediate feedback or points awarded for correct actions.
+
+3. Conclusion & Rewards
+
+ * Celebrate user achievements clearly and engagingly.
+
+ * Offer simple rewards (badges, scores, animations).
+
+### Technical: Colorful, visually engaging, responsive design.</code></pre>
+                </div>
+            </details>
+
+            <details>
+                <summary>Productivity App Template</summary>
+                <div class="template-container">
+                    <button class="copy-button" onclick="copyTemplate('template2')">
+                        <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                        </svg>
+                        Copy
+                    </button>
+                    <div class="copy-success">Copied!</div>
+                    <pre><code id="template2">Generic Productivity App Prompt Template
+
+Develop a simple and interactive web-based productivity app tailored for [briefly state target audience, e.g., professionals, students]. The app should effectively help users with [clearly state productivity goal or challenge]. Structure the app clearly:
+
+Clear Introduction
+
+Briefly outline purpose and benefits.
+
+Interactive Functionality
+
+Simple, intuitive interactions guiding users towards their goals.
+
+Visual or interactive elements for motivation and progress tracking.
+
+Completion & Encouragement
+
+Offer encouraging feedback upon task completion.
+
+Clearly display progress summaries or motivational visuals.
+
+Technical: Clean, intuitive UI, fully responsive for desktop and mobile.</code></pre>
+                </div>
+            </details>
+
+            <details>
+                <summary>Interactive Game Template</summary>
+                <div class="template-container">
+                    <button class="copy-button" onclick="copyTemplate('template3')">
+                        <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                        </svg>
+                        Copy
+                    </button>
+                    <div class="copy-success">Copied!</div>
+                    <pre><code id="template3">Generic Learning Game Prompt Template
+
+Create a gamified educational web app for [target audience ] to learn the [topic] interactively. Follow the structure:
+
+Fun Examples:
+
+Friendly cartoon character introduces concept with real life examples.
+
+Present 1-2 clear examples visually showing correct triangle solutions step-by-step.
+
+Visual Theory Explanation
+
+Briefly and visually explain the underlying theory with real-world examples.
+
+Interactive Challenges
+
+Offer 2-3 tasks where learner apply the theory.
+
+Immediate humorous feedback; award badges for correct answers.
+
+Quiz
+
+Short (1-2 questions) quiz to reinforce learning with fun feedback.
+
+Technical: Bright visuals, humorous and engaging interactions, responsive for all devices.</code></pre>
+                </div>
+            </details>
+            
+            <div class="illustration-placeholder">
+                <!-- Illustration: Templates -->
+                [Illustration: Document templates with prompts]
+            </div>
+        </section>
+
+        <section class="submit-section">
+            <h2>Submit Your Entry</h2>
+            <div class="submit-container">
+                <div class="submit-info">
+                    <p class="submit-tagline">Finished your creation?</p>
+                    <ul class="benefits-list">
+                        <li><span class="benefit-icon">🔗</span> Be part of the community</li>
+                        <li><span class="benefit-icon">💡</span> Showcase your creativity</li>
+                        <li><span class="benefit-icon">✏️</span> You can edit your submission later too</li>
+                        <li><span class="benefit-icon">🔄</span> You can make multiple entries</li>
+                    </ul>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSesqIFw3FglZuwFmLKjBs-SCZTPqYm4oWVv2pCRDf5oHhP2iw/viewform?usp=dialog" class="cta-button submit-button">
+                        <span class="button-text">Submit Your Challenge</span>
+                        <span class="button-icon">→</span>
+                    </a>
+                </div>
+                <div class="submit-decoration">
+                    <div class="circle-decoration"></div>
+                    <div class="illustration-placeholder submit-illustration">
+                        [Illustration: Person submitting an exciting prompt idea]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Submissions</h2>
+            <iframe
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRV-1bF_51FBa-fGS0VXKhLsZsBl3iPod1oKgLIVHlAHj1fpRzygoDqQAeZisbDrv4_0RBPiNO8xsj9/pubhtml?gid=378206683&amp;single=true&amp;widget=true&amp;headers=false&amp;range=C:E&amp;chrome=false"
+                    width="100%" height="600"
+            ></iframe>
+
+            <div class="illustration-placeholder">
+                <!-- Illustration: Submissions -->
+                [Illustration: Gallery of entries/submissions with awards]
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 One-Prompt Challenge Workshop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyTemplate(templateId) {
+            const templateElement = document.getElementById(templateId);
+            const templateText = templateElement.textContent;
+            
+            // Create a temporary textarea to copy from
+            const textarea = document.createElement('textarea');
+            textarea.value = templateText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                // Execute copy command
+                document.execCommand('copy');
+                
+                // Show success message
+                const button = event.currentTarget;
+                const container = button.closest('.template-container');
+                const successMessage = container.querySelector('.copy-success');
+                
+                successMessage.classList.add('show');
+                
+                // Hide success message after 2 seconds
+                setTimeout(function() {
+                    successMessage.classList.remove('show');
+                }, 2000);
+                
+            } catch (err) {
+                console.error('Failed to copy template: ', err);
+            }
+            
+            // Clean up
+            document.body.removeChild(textarea);
+        }
+        
+        // Add click handler to details elements to prevent closing when copy button is clicked
+        document.querySelectorAll('.copy-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 </body>
 </html>
