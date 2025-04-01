@@ -27,13 +27,14 @@
     </script>
 </head>
 <body class="font-inter bg-light text-dark">
-    <header class="relative mb-10 bg-gradient-to-br from-primary to-primary-light text-white">
-        <div class="max-w-5xl mx-auto px-4 py-16 text-center">
+    <header class="relative mb-10 bg-gradient-to-br from-primary to-primary-light">
+        <div class="max-w-5xl mx-auto px-4 py-16 text-center text-white">
             <h1 class="text-5xl font-bold mb-4">One-Prompt Challenge Workshop</h1>
             <p class="text-xl opacity-90 max-w-2xl mx-auto mb-2">Create amazing solutions with just a single prompt. Join the challenge and show your creative side!</p>
-            <p class="text-xl opacity-90">25' April 2nd</p>
         </div>
-        <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-48 h-10 bg-light rounded-full shadow-lg"></div>
+        <div class="text-gray absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-48 h-10 bg-light rounded-full shadow-lg text-center flex items-center justify-center">
+            <p>2025 April 2nd</p>
+        </div>
     </header>
 
     <main class="max-w-5xl mx-auto px-4">
@@ -72,13 +73,13 @@
                         <div>
                             <h3 class="text-lg font-semibold mb-2">Lovable</h3>
                             <p class="text-gray-600 mb-3">
-                                Turn your ideas into beautiful, responsive web applications with AI-powered design suggestions.
+                                The main tool for the challenge. <br>Offers 5 free prompts per day.
                             </p>
                             <a href="https://lovable.dev/" 
                                target="_blank"
                                rel="noopener noreferrer" 
                                class="inline-flex items-center text-primary hover:text-primary-light">
-                                Try Lovable
+                                Open Lovable
                                 <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
@@ -96,13 +97,13 @@
                         <div>
                             <h3 class="text-lg font-semibold mb-2">v0.dev</h3>
                             <p class="text-gray-600 mb-3">
-                                Generate and iterate on web UIs with AI. Create responsive components and full layouts using natural language.
+                                Also great! Backup tool for the challenge.<br>Offers 6-7 free starting prompts per month.
                             </p>
                             <a href="https://v0.dev/" 
                                target="_blank"
                                rel="noopener noreferrer" 
                                class="inline-flex items-center text-primary hover:text-primary-light">
-                                Try v0.dev
+                                Open v0.dev
                                 <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
@@ -130,40 +131,45 @@
                                 </svg>
                                 Copy
                             </button>
-                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-green-500 text-white rounded-md">
+                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-secondary text-white rounded-md">
                                 Copied!
                             </div>
                             <pre class="bg-gray-50 rounded-lg p-6 mt-2 overflow-x-auto">
                             <code id="template1">
-# Generic Interactive Game Prompt Template
+Create a gamified educational web app for [briefly describe target audience or age group]
+to learn [state your chosen theme or topic here] interactively.
+Follow the structure:
 
-Create an interactive, engaging web game app designed for users to [briefly describe target audience or age group]. The game should clearly introduce a playful scenario or character related to [state your chosen theme or topic here]. Follow this structured approach:
+1. Fun Examples:
 
-1. Introduction & Visual Appeal
+ * Friendly cartoon character introduces concept with real life examples.
 
- * Briefly introduce the main scenario or character.
+ * Present 1-2 clear examples visually showing correct triangle solutions step-by-step.
 
- * Provide clear, intuitive instructions.
+2. Visual Theory Explanation:
 
-2. Gameplay & Challenges
+ * Clearly present the theory using real numbers and visuals.
 
- * Include interactive, intuitive, progressively challenging tasks.
+3. Interactive Challenges:
 
- * Immediate feedback or points awarded for correct actions.
+ * Offer 2-3 tasks where learner apply the theorem.
+ * Immediate humorous feedback; award badges for correct answers.
 
-3. Conclusion & Rewards
+4. Quiz:
 
- * Celebrate user achievements clearly and engagingly.
+ * Short (1-2 questions) quiz to reinforce learning with fun feedback.
 
- * Offer simple rewards (badges, scores, animations).
+### Other:
+ * Design: Bright, playful visuals.
+ * Humorous language
 
-### Technical: Colorful, visually engaging, responsive design.</code></pre>
+</code></pre>
                         </div>
                     </div>
                 </details>
                 <details class="group bg-white rounded-lg border border-gray-200">
                     <summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
-                        <span class="text-lg font-medium">Productivity App Template</span>
+                        <span class="text-lg font-medium">Habit Tracking App Template</span>
                     </summary>
                     <div class="p-4 border-t border-gray-200">
                         <div class="relative">
@@ -174,20 +180,19 @@ Create an interactive, engaging web game app designed for users to [briefly desc
                                 </svg>
                                 Copy
                             </button>
-                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-green-500 text-white rounded-md">
+                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-secondary text-white rounded-md">
                                 Copied!
                             </div>
                             <pre class="bg-gray-50 rounded-lg p-6 mt-2 overflow-x-auto">
                             <code id="template2">
-# Generic Productivity App Prompt Template
-
-Develop a simple and interactive web-based productivity app tailored for [briefly state target audience, e.g., professionals, students]. The app should effectively help users with [clearly state productivity goal or challenge]. Structure the app clearly:
+Develop a simple and interactive web-based habit tracker app tailored for
+[briefly state target audience, e.g., professionals, students].
+The app should effectively help users with [clearly state productivity goal or challenge].
+Structure the app clearly:
 
 1. Clear Introduction
 
     * Briefly outline purpose and benefits.
-
-    * Interactive Functionality
 
 2. Simple, intuitive interactions guiding users towards their goals.
 
@@ -205,7 +210,7 @@ Develop a simple and interactive web-based productivity app tailored for [briefl
                 </details>
                 <details class="group bg-white rounded-lg border border-gray-200">
                     <summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
-                        <span class="text-lg font-medium">Interactive Game Template</span>
+                        <span class="text-lg font-medium">Interactive Quiz Template</span>
                     </summary>
                     <div class="p-4 border-t border-gray-200">
                         <div class="relative">
@@ -216,36 +221,31 @@ Develop a simple and interactive web-based productivity app tailored for [briefl
                                 </svg>
                                 Copy
                             </button>
-                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-green-500 text-white rounded-md">
+                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-secondary text-white rounded-md">
                                 Copied!
                             </div>
                             <pre class="bg-gray-50 rounded-lg p-6 mt-2 overflow-x-auto">
                             <code id="template3">
-# Generic Learning Game Prompt Template
+Create a quiz game web app for [target audience ] about [topic] interactively.
+Follow the structure:
 
-Create a gamified educational web app for [target audience ] to learn the [topic] interactively. Follow the structure:
+1. Multiple answers round with text questions:
 
-Fun Examples:
+ * Player scores points for each correct answer.
 
-- Friendly cartoon character introduces concept with real life examples.
+2. Multiple answers round with visual questions
 
-- Present 1-2 clear examples visually showing correct triangle solutions step-by-step.
+ * Player scores points for each correct answer.
 
-1. Visual Theory Explanation
+3. Guess the missing word round:
 
-    * Briefly and visually explain the underlying theory with real-world examples.
+ * Player needs to type the missing word. Getting points for each correct answer.
 
-2. Interactive Challenges
+4. Share results with friends and invite them to compete.
 
-    * Offer 2-3 tasks where learner apply the theory.
-
-    * Immediate humorous feedback; award badges for correct answers.
-
-3. Quiz
-
-    * Short (1-2 questions) quiz to reinforce learning with fun feedback.
-
-### Technical: Bright visuals, humorous and engaging interactions, responsive for all devices.</code></pre>
+### Other:
+ * Design: Bright, playful visuals.
+ * Humorous and engaging interactions</code></pre>
                         </div>
                     </div>
                 </details>
@@ -262,38 +262,38 @@ Fun Examples:
                                 </svg>
                                 Copy
                             </button>
-                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-green-500 text-white rounded-md">
+                            <div class="copy-success hidden absolute right-4 top-14 px-3 py-1 bg-secondary text-white rounded-md">
                                 Copied!
                             </div>
                             <pre class="bg-gray-50 rounded-lg p-6 mt-2 overflow-x-auto">
                             <code id="template4">
-# Custom Prompt Template
+Create a [type of application] that is meant for [target audience].
+[explain the main goal/problem to solve].
+Follow the structure:
 
-Create a [type of application] that helps [target audience] with [main goal/problem to solve]. The application should follow this structure:
+1. App section one
 
-1. Core Functionality
+    * Explain what happens in this section
 
-    * Define the main feature or interaction
-    * Explain how it solves the user's problem
+    * Use multiple bullets if needed.
 
-2. User Experience
+2. App section two
 
-    * Describe the key interactions
-    * Outline the user flow
-    * Specify any unique elements or innovations
+    * Explain what happens in this section
 
-3. Visual & Technical Requirements
+    * Use multiple bullets if needed.
 
-    * State any specific visual requirements
-    * List technical requirements (responsive, accessibility, etc.)
-    * Define success metrics
+3. App section three
 
-### Additional Notes:
-* Add any specific constraints or requirements
-* Include any unique features or innovations
-* Specify integration needs if any
+    * Explain what happens in this section
 
-### Technical: [Add your technical requirements here]</code></pre>
+    * Use multiple bullets if needed.
+
+
+### Other:
+* Non-functional stuff
+* Like tone of voice, design, etc.
+* Any special requirements you have</code></pre>
                         </div>
                     </div>
                 </details>
